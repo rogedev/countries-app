@@ -1,11 +1,9 @@
-import axios from 'axios';
 import { Country } from '../types/Country';
-import { Region } from '../constants/Regions';
+import { getCountriesFromApi } from '../api/getCountriesFromApi';
 
 export async function getCountries(): Promise<Array<Country>> {
-  const response = await axios.get<Response>('https://restcountries.com/v3.1/all');
-
-  return response.data.map((country) => ({
+  const countries = await getCountriesFromApi();
+  return countries.map((country) => ({
     name: country.name.common,
     nativeName: Object.values(country.name.nativeName ?? {})[0]?.official,
     population: country.population,
@@ -22,36 +20,3 @@ export async function getCountries(): Promise<Array<Country>> {
     },
   }));
 }
-
-type Response = Array<{
-  name: {
-    common: string;
-    official: string;
-    nativeName?: Record<
-      string,
-      {
-        official: string;
-        common: string;
-      }
-    >;
-  };
-  population: number;
-  region: Region;
-  subregion: string;
-  capital?: Array<string>;
-  tld?: Array<string>;
-  currencies?: Record<
-    string,
-    {
-      name: string;
-      symbol: string;
-    }
-  >;
-  languages: Record<string, string>;
-  borders: Array<string>;
-  flags: {
-    png: string;
-    svg: string;
-    alt: string;
-  };
-}>;
