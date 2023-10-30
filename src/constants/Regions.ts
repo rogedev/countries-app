@@ -3,6 +3,8 @@ export const Regions = {
   ASIA: 'Asia',
   AMERICA: 'Americas',
   EUROPE: 'Europe',
+  ANTARTIC: 'Antarctic',
+  OCEANIA: 'Oceania',
 } as const;
 
 export type Region = (typeof Regions)[keyof typeof Regions];
