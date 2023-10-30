@@ -10,7 +10,7 @@ export type Country = {
   tld: string;
   currencies: Array<string>;
   languages: Array<string>;
-  borders: Array<string>;
+  borders?: Array<string>;
   flag: {
     img: string;
     alt: string;
