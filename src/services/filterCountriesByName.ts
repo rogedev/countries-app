@@ -2,11 +2,15 @@ import { Country } from '../types/Country';
 
 export function filterCountriesByName({ countries, name }: Params): Array<Country> {
   const filteredCountries = [];
+
   for (const country of countries) {
-    if (country.name.toLowerCase().includes(name.toLowerCase())) {
+    const countryMatchName = country.name.toLowerCase().includes(name.toLowerCase());
+
+    if (countryMatchName) {
       filteredCountries.push(country);
     }
   }
+
   return filteredCountries;
 }
 

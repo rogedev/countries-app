@@ -2,8 +2,8 @@ import type { Region } from '../constants/Regions';
 import axios from 'axios';
 
 export async function getCountriesFromApi() {
-  const response = await axios.get<Response>('https://restcountries.com/v3.1/all');
-  return response.data;
+  const { data } = await axios.get<Response>('https://restcountries.com/v3.1/all');
+  return data;
 }
 
 type Response = Array<{

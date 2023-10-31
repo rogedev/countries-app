@@ -3,11 +3,15 @@ import { Country } from '../types/Country';
 
 export function filterCountriesByRegion({ countries, region }: Params): Array<Country> {
   const filteredCountries = [];
+
   for (const country of countries) {
-    if (country.region.toLowerCase() === region.toLocaleLowerCase()) {
+    const countryMatchRegion = country.region.toLowerCase() === region.toLocaleLowerCase();
+
+    if (countryMatchRegion) {
       filteredCountries.push(country);
     }
   }
+
   return filteredCountries;
 }
 

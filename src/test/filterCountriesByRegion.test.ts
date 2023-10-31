@@ -54,6 +54,7 @@ test('filterCountriesByRegion Test', () => {
       },
     },
   ];
+
   const givenCountries: Array<Country> = [...countriesFromAmerica, ...countriesFromOceania];
 
   expect(
