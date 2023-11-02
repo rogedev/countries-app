@@ -1,7 +1,7 @@
 import { Country } from '../types/Country';
 import { getCountryFromApi } from '../api/getCountryFromApi';
 
-export async function getCountries(name: string): Promise<Country> {
+export async function getCountry(name: string): Promise<Country> {
   const country = await getCountryFromApi(name);
   return {
     name: country.name.common,
