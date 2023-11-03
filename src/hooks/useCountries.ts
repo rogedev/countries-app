@@ -1,7 +1,7 @@
+import { useEffect } from 'react';
 import { Country } from '../types/Country';
 import { useAppDispatch, useAppSelector } from './redux';
 import { getCountries } from '../services/getCountries';
-import { useEffect } from 'react';
 import { setCountries } from '../redux/countriesRedux';
 
 export function useCountries(): Array<Country> {

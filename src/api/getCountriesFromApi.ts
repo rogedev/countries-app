@@ -1,4 +1,3 @@
-import type { Region } from '../constants/Regions';
 import axios from 'axios';
 import { CountryFromApi } from '../types/CountryFromApi';
 
