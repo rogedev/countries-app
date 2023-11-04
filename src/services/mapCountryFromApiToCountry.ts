@@ -17,5 +17,6 @@ export function mapCountryFromApiToCountry(countryFromApi: CountryFromApi): Coun
       img: countryFromApi.flags.png ?? countryFromApi.flags.svg,
       alt: countryFromApi.flags.alt ?? `${countryFromApi.name.common} Flag`,
     },
+    code: countryFromApi.cca2,
   };
 }

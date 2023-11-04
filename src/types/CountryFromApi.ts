@@ -31,4 +31,5 @@ export type CountryFromApi = {
     svg: string;
     alt: string;
   };
+  cca2: string;
 };

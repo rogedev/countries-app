@@ -15,4 +15,5 @@ export type Country = {
     img: string;
     alt: string;
   };
+  code: string;
 };
