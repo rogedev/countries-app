@@ -7,9 +7,7 @@ export function filterCountriesByRegion({ countries, region }: Params): Array<Co
   for (const country of countries) {
     const countryMatchRegion = country.region.toLowerCase() === region.toLocaleLowerCase();
 
-    if (countryMatchRegion) {
-      filteredCountries.push(country);
-    }
+    if (countryMatchRegion) filteredCountries.push(country);
   }
 
   return filteredCountries;
