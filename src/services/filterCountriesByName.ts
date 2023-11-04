@@ -6,9 +6,7 @@ export function filterCountriesByName({ countries, name }: Params): Array<Countr
   for (const country of countries) {
     const countryMatchName = country.name.toLowerCase().includes(name.toLowerCase());
 
-    if (countryMatchName) {
-      filteredCountries.push(country);
-    }
+    if (countryMatchName) filteredCountries.push(country);
   }
 
   return filteredCountries;

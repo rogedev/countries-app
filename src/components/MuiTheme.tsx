@@ -1,5 +1,5 @@
-import { createTheme, ThemeProvider, CssBaseline, StyledEngineProvider } from '@mui/material';
 import React from 'react';
+import { createTheme, ThemeProvider, CssBaseline, StyledEngineProvider } from '@mui/material';
 import { useAppSelector } from '../hooks/redux';
 
 export const MuiTheme = ({ children }: Props): JSX.Element => {
