@@ -1,19 +1,10 @@
-import { useEffect } from 'react';
 import { Country } from '../types/Country';
-import { useAppDispatch, useAppSelector } from './redux';
-import { getCountries } from '../services/getCountries';
-import { setCountries } from '../redux/countriesRedux';
+import { useAppSelector } from './redux';
+import { isEmptyArray } from '../utils/isEmptyArray';
+import { reloadCountries } from './reloadCountries';
 
 export function useCountries(): Array<Country> {
-  const { countries } = useAppSelector((state) => state.countryList);
-
-  if (Array.isArray(countries) && countries.length > 0) return countries;
-
-  const dispatch = useAppDispatch();
-
-  useEffect(() => {
-    getCountries().then((countries) => dispatch(setCountries(countries)));
-  }, []);
-
-  return useAppSelector((state) => state.countryList.countries);
+  const countries = useAppSelector((state) => state.countryList.countries);
+  if (isEmptyArray(countries)) return reloadCountries();
+  return countries;
 }
