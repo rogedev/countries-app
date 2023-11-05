@@ -1,7 +1,7 @@
 import React from 'react';
+import { Grid } from '@mui/material';
 import { Country } from '../types/Country';
 import { CountryCard } from './CountryCard';
-import { Grid } from '@mui/material';
 
 export function CountriesList({ countries }: Params): JSX.Element {
   return (

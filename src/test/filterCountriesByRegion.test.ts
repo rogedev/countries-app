@@ -61,14 +61,43 @@ test('filterCountriesByRegion Test', () => {
   const givenCountries: Array<Country> = [...countriesFromAmerica, ...countriesFromOceania];
 
   expect(
-    filterCountriesByRegion({ countries: givenCountries, region: Regions.OCEANIA }),
+    filterCountriesByRegion({
+      countries: givenCountries,
+      regions: [Regions.OCEANIA],
+    }),
   ).toMatchObject(countriesFromOceania);
 
   expect(
-    filterCountriesByRegion({ countries: givenCountries, region: Regions.AMERICA }),
+    filterCountriesByRegion({
+      countries: givenCountries,
+      regions: [Regions.AMERICA],
+    }),
   ).toMatchObject(countriesFromAmerica);
 
   expect(
-    filterCountriesByRegion({ countries: givenCountries, region: Regions.ASIA }),
+    filterCountriesByRegion({
+      countries: givenCountries,
+      regions: [Regions.AMERICA, Regions.OCEANIA],
+    }),
+  ).toMatchObject([...countriesFromAmerica, ...countriesFromOceania]);
+
+  expect(
+    filterCountriesByRegion({
+      countries: givenCountries,
+      regions: [],
+    }),
+  ).toMatchObject([...countriesFromAmerica, ...countriesFromOceania]);
+
+  expect(
+    filterCountriesByRegion({
+      countries: givenCountries,
+    }),
+  ).toMatchObject([...countriesFromAmerica, ...countriesFromOceania]);
+
+  expect(
+    filterCountriesByRegion({
+      countries: givenCountries,
+      regions: [Regions.ASIA],
+    }),
   ).toMatchObject([]);
 });
