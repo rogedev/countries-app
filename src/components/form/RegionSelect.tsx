@@ -21,30 +21,37 @@ export function RegionSelect({ onChange }: Params): JSX.Element {
   };
 
   return (
-    <div>
-      <FormControl sx={{ m: 1, width: 300 }}>
-        <InputLabel>Filter By Region</InputLabel>
-        <Select
-          multiple
-          value={selectedRegions}
-          onChange={handleChange}
-          input={<OutlinedInput id='select-multiple-chip' label='Chip' />}
-          renderValue={(selected) => (
-            <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
-              {selected.map((value) => (
-                <Chip key={value} label={value} />
-              ))}
-            </Box>
-          )}
-        >
-          {regions.map((region) => (
-            <MenuItem key={region} value={region}>
-              {region}
-            </MenuItem>
-          ))}
-        </Select>
-      </FormControl>
-    </div>
+    <FormControl sx={{ m: 1, width: 300 }}>
+      <InputLabel id='regions-select-label'>Filter By Region</InputLabel>
+      <Select
+        labelId='regions-select-label'
+        label='Filter By Region'
+        id='regions-select'
+        multiple
+        value={selectedRegions}
+        onChange={handleChange}
+        input={<OutlinedInput id='select-multiple-region' label='Region' />}
+        renderValue={(selected) => (
+          <Box
+            sx={{
+              display: 'flex',
+              flexWrap: 'wrap',
+              gap: 0.5,
+            }}
+          >
+            {selected.map((value) => (
+              <Chip key={value} label={value} />
+            ))}
+          </Box>
+        )}
+      >
+        {regions.map((region) => (
+          <MenuItem key={region} value={region}>
+            {region}
+          </MenuItem>
+        ))}
+      </Select>
+    </FormControl>
   );
 }
 
