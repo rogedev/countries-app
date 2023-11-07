@@ -1,5 +1,5 @@
 import { Country } from '../types/Country';
-import { filterCountriesByRegion } from '../services/filterCountriesByRegion';
+import { filterCountriesByRegions } from '../services/filterCountriesByRegions';
 import { Regions } from '../constants/Regions';
 
 test('filterCountriesByRegion Test', () => {
@@ -61,41 +61,41 @@ test('filterCountriesByRegion Test', () => {
   const givenCountries: Array<Country> = [...countriesFromAmerica, ...countriesFromOceania];
 
   expect(
-    filterCountriesByRegion({
+    filterCountriesByRegions({
       countries: givenCountries,
       regions: [Regions.OCEANIA],
     }),
   ).toMatchObject(countriesFromOceania);
 
   expect(
-    filterCountriesByRegion({
+    filterCountriesByRegions({
       countries: givenCountries,
       regions: [Regions.AMERICA],
     }),
   ).toMatchObject(countriesFromAmerica);
 
   expect(
-    filterCountriesByRegion({
+    filterCountriesByRegions({
       countries: givenCountries,
       regions: [Regions.AMERICA, Regions.OCEANIA],
     }),
   ).toMatchObject([...countriesFromAmerica, ...countriesFromOceania]);
 
   expect(
-    filterCountriesByRegion({
+    filterCountriesByRegions({
       countries: givenCountries,
       regions: [],
     }),
   ).toMatchObject([...countriesFromAmerica, ...countriesFromOceania]);
 
   expect(
-    filterCountriesByRegion({
+    filterCountriesByRegions({
       countries: givenCountries,
     }),
   ).toMatchObject([...countriesFromAmerica, ...countriesFromOceania]);
 
   expect(
-    filterCountriesByRegion({
+    filterCountriesByRegions({
       countries: givenCountries,
       regions: [Regions.ASIA],
     }),

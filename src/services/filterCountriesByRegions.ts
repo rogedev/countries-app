@@ -2,7 +2,7 @@ import { Region } from '../constants/Regions';
 import { Country } from '../types/Country';
 import { isEmptyArray } from '../utils/isEmptyArray';
 
-export function filterCountriesByRegion({ countries, regions }: Params): Array<Country> {
+export function filterCountriesByRegions({ countries, regions }: Params): Array<Country> {
   if (!regions || isEmptyArray(regions)) return countries;
 
   const filteredCountries = [];
