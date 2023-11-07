@@ -3,8 +3,8 @@ import { useState, useEffect } from 'react';
 import { Country } from '../types/Country';
 import { getCountries } from '../services/getCountries';
 import { CountriesList } from '../components/CountriesList';
-import { Container } from '@mui/material';
-import { NavBar } from '../components/layout/NavBar';
+import { FiltersSection } from '../components/layout/FiltersSection';
+import { Page } from '../components/layout/Page';
 
 export function CountriesPage(): JSX.Element {
   const [allCountries, setAllCountries] = useState<Countries>([]);
@@ -14,17 +14,17 @@ export function CountriesPage(): JSX.Element {
     getCountries().then((countries) => {
       setAllCountries(countries);
       setFilteredCountries(countries);
-      console.log(JSON.stringify(countries));
     });
   }, []);
 
   return (
-    <main>
-      <NavBar />
-      <Container sx={{ py: 8 }} maxWidth='xl'>
-        <CountriesList countries={filteredCountries} />
-      </Container>
-    </main>
+    <Page>
+      <FiltersSection
+        countries={allCountries}
+        onFilter={(countries) => setFilteredCountries(countries)}
+      />
+      <CountriesList countries={filteredCountries} />
+    </Page>
   );
 }
 
