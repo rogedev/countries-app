@@ -3,7 +3,7 @@ export const Regions = {
   ASIA: 'Asia',
   AMERICA: 'Americas',
   EUROPE: 'Europe',
-  ANTARTIC: 'Antarctic',
+  ANTARCTIC: 'Antarctic',
   OCEANIA: 'Oceania',
 } as const;
 
