@@ -9,7 +9,17 @@ import { RegionSelect } from '../form/RegionSelect';
 
 export function FiltersSection({ countries, onFilter }: Params): JSX.Element {
   return (
-    <Grid marginBottom={10} container spacing={4}>
+    <Grid
+      marginBottom={10}
+      container
+      spacing={4}
+      sx={{
+        flexWrap: 'wrap',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+      }}
+    >
       <CountryNameTextField
         onChange={(name: string) =>
           onFilter(

@@ -6,7 +6,13 @@ import { AppTitle } from './AppTitle';
 export function NavBar(): JSX.Element {
   return (
     <AppBar position='static' color='default' elevation={0}>
-      <Toolbar sx={{ flexWrap: 'wrap' }}>
+      <Toolbar
+        sx={{
+          flexWrap: 'wrap',
+          bgcolor: 'background.default',
+          color: 'text.primary',
+        }}
+      >
         <AppTitle />
         <ThemeToggle />
       </Toolbar>
