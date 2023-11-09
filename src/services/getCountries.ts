@@ -1,6 +1,6 @@
 import { Country } from '../types/Country';
 import { getCountriesFromApi } from '../api/getCountriesFromApi';
-import { mapCountryFromApiToCountry } from './mapCountryFromApiToCountry';
+import { mapCountryFromApiToCountry } from '../utils/mapCountryFromApiToCountry';
 
 export async function getCountries(): Promise<Array<Country>> {
   const countriesFromApi = await getCountriesFromApi();

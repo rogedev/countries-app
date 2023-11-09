@@ -1,4 +1,5 @@
 import { Region } from '../constants/Regions';
+import { CountryCode } from './CountryCode';
 
 export type CountryFromApi = {
   name: {
@@ -25,11 +26,11 @@ export type CountryFromApi = {
     }
   >;
   languages: Record<string, string>;
-  borders: Array<string>;
+  borders: Array<CountryCode>;
   flags: {
     png: string;
     svg: string;
     alt: string;
   };
-  cca2: string;
+  cca2: CountryCode;
 };

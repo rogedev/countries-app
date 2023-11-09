@@ -17,7 +17,7 @@ export function CountryCard({ country }: Params): JSX.Element {
         }}
         onClick={handleClick}
       >
-        <Link to={`/country/${country.code}`}>
+        <Link to={`/country/${country.code.toLowerCase()}`}>
           <CardMedia
             component='div'
             sx={{

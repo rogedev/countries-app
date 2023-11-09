@@ -1,4 +1,5 @@
 import { Region } from '../constants/Regions';
+import { CountryCode } from './CountryCode';
 
 export type Country = {
   name: string;
@@ -10,10 +11,10 @@ export type Country = {
   tld: string;
   currencies: Array<string>;
   languages: Array<string>;
-  borders?: Array<string>;
+  borders?: Array<CountryCode>;
   flag: {
     img: string;
     alt: string;
   };
-  code: string;
+  code: CountryCode;
 };

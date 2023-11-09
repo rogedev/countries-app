@@ -6,7 +6,7 @@ import { CountriesList } from '../components/CountriesList';
 import { FiltersSection } from '../components/layout/FiltersSection';
 import { Page } from '../components/layout/Page';
 
-export function CountriesPage(): JSX.Element {
+export function CountriesPage() {
   const [allCountries, setAllCountries] = useState<Countries>([]);
   const [filteredCountries, setFilteredCountries] = useState<Countries>(allCountries);
 

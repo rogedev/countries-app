@@ -1,5 +1,6 @@
 import { filterCountriesByName } from '../services/filterCountriesByName';
 import { Country } from '../types/Country';
+import { CountryCode } from '../types/CountryCode';
 
 test('filterCountriesByName Test', () => {
   const givenCountries: Array<Country> = [
@@ -13,12 +14,12 @@ test('filterCountriesByName Test', () => {
       tld: '.mx',
       currencies: ['Mexican peso'],
       languages: ['Spanish'],
-      borders: ['BLZ', 'GTM', 'USA'],
+      borders: ['BLZ', 'GTM', 'USA'] as Array<CountryCode>,
       flag: {
         img: 'https://flagcdn.com/w320/mx.png',
         alt: 'The flag of Mexico is composed of three equal vertical bands of green, white and red, with the national coat of arms centered in the white band.',
       },
-      code: '',
+      code: '' as CountryCode,
     },
     {
       name: 'Australia',
@@ -34,7 +35,7 @@ test('filterCountriesByName Test', () => {
         img: 'https://flagcdn.com/w320/au.png',
         alt: 'The flag of Australia has a dark blue field. It features the flag of the United Kingdom — the Union Jack — in the canton, beneath which is a large white seven-pointed star. A representation of the Southern Cross constellation, made up of one small five-pointed and four larger seven-pointed white stars, is situated on the fly side of the field.',
       },
-      code: '',
+      code: '' as CountryCode,
     },
     {
       name: 'Cuba',
@@ -50,7 +51,7 @@ test('filterCountriesByName Test', () => {
         img: 'https://flagcdn.com/w320/cu.png',
         alt: 'The flag of Cuba is composed of five equal horizontal bands of blue alternating with white and a red equilateral triangle superimposed on the hoist side of the field. The triangle has its base on the hoist end, spans about two-fifth the width of the field and bears a white five-pointed star at its center.',
       },
-      code: '',
+      code: '' as CountryCode,
     },
   ];
 
@@ -82,7 +83,7 @@ test('filterCountriesByName Test', () => {
         img: 'https://flagcdn.com/w320/mx.png',
         alt: 'The flag of Mexico is composed of three equal vertical bands of green, white and red, with the national coat of arms centered in the white band.',
       },
-      code: '',
+      code: '' as CountryCode,
     },
   ]);
 });
