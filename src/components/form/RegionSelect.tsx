@@ -22,7 +22,7 @@ export function RegionSelect({ onChange }: Params): JSX.Element {
 
   return (
     <FormControl sx={{ m: 1, width: 300 }}>
-      <InputLabel id='regions-select-label'>Filter By Region</InputLabel>
+      <InputLabel id='regions-select-label'>Filter by region</InputLabel>
       <Select
         labelId='regions-select-label'
         label='Filter By Region'
