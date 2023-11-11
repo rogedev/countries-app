@@ -1,12 +1,13 @@
+import { getCountriesFromApiByCountryCodes } from '../api/getCountriesFromApiByCountryCodes';
 import { Border } from '../types/Border';
 import { CountryCode } from '../types/CountryCode';
+import { mapCountryFromApiToCountry } from '../utils/mapCountryFromApiToCountry';
 import { mapCountryToBorder } from '../utils/mapCountryToBorder';
-import { getCountry } from './getCountry';
 
 export async function getBordersListFromCountryBorders(
   borders?: Array<CountryCode>,
 ): Promise<Array<Border>> {
   if (!borders) return [];
-  const borderCountries = await Promise.all(borders.map(getCountry));
-  return borderCountries.map(mapCountryToBorder);
+  const borderCountries = await getCountriesFromApiByCountryCodes(borders);
+  return borderCountries.map(mapCountryFromApiToCountry).map(mapCountryToBorder);
 }
