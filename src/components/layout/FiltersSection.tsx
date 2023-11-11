@@ -7,7 +7,7 @@ import { filterCountriesByRegions } from '../../services/filterCountriesByRegion
 import { CountryNameTextField } from '../form/CountryNameTextField';
 import { RegionSelect } from '../form/RegionSelect';
 
-export function FiltersSection({ countries, onFilter }: Params): JSX.Element {
+export function FiltersSection({ countries, onFilter }: Props): JSX.Element {
   return (
     <Grid
       marginBottom={10}
@@ -44,7 +44,7 @@ export function FiltersSection({ countries, onFilter }: Params): JSX.Element {
   );
 }
 
-type Params = {
+type Props = {
   countries: Array<Country>;
   onFilter: (countries: Array<Country>) => void;
 };

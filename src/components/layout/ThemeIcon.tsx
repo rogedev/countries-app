@@ -5,7 +5,7 @@ import NightlightRoundIcon from '@mui/icons-material/NightlightRound';
 import { IconButton } from '@mui/material';
 import { isDarkTheme } from '../../utils/isDarkTheme';
 
-export function ThemeIcon({ themeMode, onClick }: Params): JSX.Element {
+export function ThemeIcon({ themeMode, onClick }: Props): JSX.Element {
   return (
     <IconButton
       sx={{
@@ -20,7 +20,7 @@ export function ThemeIcon({ themeMode, onClick }: Params): JSX.Element {
   );
 }
 
-type Params = {
+type Props = {
   themeMode: PaletteMode;
   onClick: () => void;
 };

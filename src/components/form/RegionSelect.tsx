@@ -11,7 +11,7 @@ import {
 } from '@mui/material';
 import { Regions, Region } from '../../constants/Regions';
 
-export function RegionSelect({ onChange }: Params): JSX.Element {
+export function RegionSelect({ onChange }: Props): JSX.Element {
   const [selectedRegions, setSelectedRegions] = useState<Array<Region>>([]);
   const regions = Object.values(Regions);
 
@@ -55,6 +55,6 @@ export function RegionSelect({ onChange }: Params): JSX.Element {
   );
 }
 
-type Params = {
+type Props = {
   onChange: (regions: Array<Region>) => void;
 };
