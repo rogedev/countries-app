@@ -5,17 +5,28 @@ import { getCountries } from '../services/getCountries';
 import { CountriesList } from '../components/CountriesList';
 import { FiltersSection } from '../components/layout/FiltersSection';
 import { Page } from '../components/layout/Page';
+import { LoadingProgress } from '../components/layout/LoadingProgress';
 
 export function CountriesPage() {
   const [allCountries, setAllCountries] = useState<Countries>([]);
   const [filteredCountries, setFilteredCountries] = useState<Countries>(allCountries);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    getCountries().then((countries) => {
-      setAllCountries(countries);
-      setFilteredCountries(countries);
-    });
+    setIsLoading(true);
+    getCountries()
+      .then((countries) => {
+        setAllCountries(countries);
+        setFilteredCountries(countries);
+        setIsLoading(false);
+      })
+      .catch((e) => {
+        console.error(e);
+        setIsLoading(false);
+      });
   }, []);
+
+  if (isLoading) return <LoadingProgress />;
 
   return (
     <Page>

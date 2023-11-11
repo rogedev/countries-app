@@ -1,17 +1,19 @@
 import React from 'react';
-import { Typography } from '@mui/material';
+import { Box, Typography } from '@mui/material';
+import { Link } from 'react-router-dom';
 
 export function AppTitle(): JSX.Element {
   return (
-    <Typography
-      variant='h6'
-      color='inherit'
-      noWrap
+    <Box
       sx={{
         flexGrow: 1,
       }}
     >
-      Where in the world?
-    </Typography>
+      <Link to='/'>
+        <Typography variant='h6' color='inherit' noWrap>
+          Where in the world?
+        </Typography>
+      </Link>
+    </Box>
   );
 }
