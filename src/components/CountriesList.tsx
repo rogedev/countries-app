@@ -3,7 +3,7 @@ import { Grid } from '@mui/material';
 import { Country } from '../types/Country';
 import { CountryCard } from './CountryCard';
 
-export function CountriesList({ countries }: Params): JSX.Element {
+export function CountriesList({ countries }: Props): JSX.Element {
   return (
     <Grid container spacing={4}>
       {countries.map((country) => (
@@ -13,6 +13,6 @@ export function CountriesList({ countries }: Params): JSX.Element {
   );
 }
 
-type Params = {
+type Props = {
   countries: Array<Country>;
 };

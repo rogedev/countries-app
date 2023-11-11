@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import { Button, Card, CardActions, CardContent, CardMedia, Grid, Typography } from '@mui/material';
+import { Box, IconButton, Paper, Typography } from '@mui/material';
 import { Link, useParams } from 'react-router-dom';
 import { Page } from '../components/layout/Page';
 import { getCountry } from '../services/getCountry';
 import { Country } from '../types/Country';
 import { CountryCode } from '../types/CountryCode';
-import { formatPopulation } from '../utils/formatPopulation';
-import { Border } from '../types/Border';
-import { getBordersListFromCountryBorders } from '../services/getBordersListFromCountryBorders';
 import { Error404Page } from './Error404Page';
 import { LoadingProgress } from '../components/layout/LoadingProgress';
+import { CountryDetails } from '../components/CountryDetails';
+import { ArrowBack } from '@mui/icons-material';
+import { getBordersListFromCountryBorders } from '../services/getBordersListFromCountryBorders';
+import { Border } from '../types/Border';
 
 export function CountryPage() {
   const params = useParams<Params>();
@@ -18,19 +19,18 @@ export function CountryPage() {
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    loadCountryDetails(params.countryCode as CountryCode).then;
+    loadCountryDetails(params.countryCode as CountryCode);
   }, []);
 
   const loadCountryDetails = async (countryCode: CountryCode) => {
     setIsLoading(true);
-
     getCountry(countryCode)
       .then((country) => {
         setCountry(country);
-        getBordersListFromCountryBorders(country.borders ?? []).then((borders) =>
-          setBorders(borders),
-        );
-        setIsLoading(false);
+        getBordersListFromCountryBorders(country.borders ?? []).then((borders) => {
+          setBorders(borders);
+          setIsLoading(false);
+        });
       })
       .catch((err) => {
         console.error(err);
@@ -44,56 +44,44 @@ export function CountryPage() {
 
   return (
     <Page>
-      <Link to={'/'}>
-        <Button variant='contained' color='inherit'>
-          back
-        </Button>
-      </Link>
-      <Grid>
-        <Card>
-          <CardMedia
-            component='div'
+      <Box
+        sx={{
+          marginInline: {
+            md: '3rem',
+            lg: '5rem',
+            xs: '1rem',
+          },
+        }}
+      >
+        <Link to='/' aria-label='home page'>
+          <Paper
             sx={{
-              // 16:9
-              pt: '56.25%',
+              display: 'inline-block',
+              gap: '8px',
+              marginBlock: {
+                md: '3rem',
+                xs: '1.5rem',
+              },
+              paddingInline: '1.5rem',
             }}
-            image={country.flag.img}
-          />
-        </Card>
-        <Card>
-          <CardContent
-            sx={{
-              flexGrow: 1,
-            }}
+            elevation={2}
           >
-            <h1>{country.name}</h1>
-            <Typography>Native Name: {country.nativeName}</Typography>
-            <Typography>Population: {formatPopulation(country.population)}</Typography>
-            <Typography>Region: {country.region}</Typography>
-            <Typography>Subregion: {country.subRegion}</Typography>
-            <Typography>Capital: {country.capital}</Typography>
-            <Typography>Top level domain: {country.tld}</Typography>
-            <Typography>Currencies: {country.currencies.join(', ')}</Typography>
-            <Typography>Languages: {country.languages.join(', ')}</Typography>
-          </CardContent>
-          <CardActions>
-            {borders?.map((border) => (
-              <Link key={border.code} to={`/country/${border.code.toLowerCase()}`}>
-                <Button
-                  variant='contained'
-                  color='inherit'
-                  sx={{
-                    textTransform: 'none',
-                  }}
-                  onClick={() => loadCountryDetails(border.code)}
-                >
-                  {border.name}
-                </Button>
-              </Link>
-            ))}
-          </CardActions>
-        </Card>
-      </Grid>
+            <IconButton>
+              <ArrowBack />
+            </IconButton>
+            <Typography
+              sx={{
+                textDecoration: 'none',
+                display: 'inline',
+                fontFamily: 'Nunito Sans',
+              }}
+            >
+              Back
+            </Typography>
+          </Paper>
+        </Link>
+        <CountryDetails country={country} borders={borders} onClickBorder={loadCountryDetails} />
+      </Box>
     </Page>
   );
 }

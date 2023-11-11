@@ -4,7 +4,7 @@ import { Grid, Card, CardContent, CardMedia, Typography } from '@mui/material';
 import { Country } from '../types/Country';
 import { formatPopulation } from '../utils/formatPopulation';
 
-export function CountryCard({ country }: Params): JSX.Element {
+export function CountryCard({ country }: Props): JSX.Element {
   const handleClick = () => console.log(country);
 
   return (
@@ -40,6 +40,6 @@ export function CountryCard({ country }: Params): JSX.Element {
   );
 }
 
-type Params = {
+type Props = {
   country: Country;
 };

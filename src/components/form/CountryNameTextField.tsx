@@ -2,7 +2,7 @@ import * as React from 'react';
 import TextField from '@mui/material/TextField';
 import { FormControl } from '@mui/material';
 
-export function CountryNameTextField({ onChange }: Params): JSX.Element {
+export function CountryNameTextField({ onChange }: Props): JSX.Element {
   return (
     <FormControl
       sx={{
@@ -19,6 +19,6 @@ export function CountryNameTextField({ onChange }: Params): JSX.Element {
   );
 }
 
-type Params = {
+type Props = {
   onChange: (value: string) => void;
 };
