@@ -27,7 +27,7 @@ export function CountryPage() {
     getCountry(countryCode)
       .then((country) => {
         setCountry(country);
-        getBordersListFromCountryBorders(country.borders ?? []).then((borders) => {
+        getBordersListFromCountryBorders(country.borders).then((borders) => {
           setBorders(borders);
           setIsLoading(false);
         });
