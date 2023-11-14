@@ -20,7 +20,7 @@ export function CountryPage() {
 
   useEffect(() => {
     loadCountryDetails(params.countryCode as CountryCode);
-  }, []);
+  }, [params.countryCode]);
 
   const loadCountryDetails = async (countryCode: CountryCode) => {
     setIsLoading(true);
