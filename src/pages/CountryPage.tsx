@@ -17,7 +17,7 @@ export function CountryPage() {
   const [countryCode, setCountryCode] = useState(params.countryCode);
   const [country, setCountry] = useState<Country>();
   const [borders, setBorders] = useState<Array<Border>>([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     setIsLoading(true);
