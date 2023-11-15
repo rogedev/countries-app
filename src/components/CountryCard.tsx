@@ -5,8 +5,6 @@ import { Country } from '../types/Country';
 import { formatPopulation } from '../utils/formatPopulation';
 
 export function CountryCard({ country }: Props): JSX.Element {
-  const handleClick = () => console.log(country);
-
   return (
     <Grid item key={country.name} xs={12} sm={6} md={3}>
       <Card
@@ -15,7 +13,6 @@ export function CountryCard({ country }: Props): JSX.Element {
           display: 'flex',
           flexDirection: 'column',
         }}
-        onClick={handleClick}
       >
         <Link to={`/country/${country.code.toLowerCase()}`}>
           <CardMedia

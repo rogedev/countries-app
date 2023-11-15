@@ -5,37 +5,35 @@ import { Page } from '../components/layout/Page';
 import { getCountry } from '../services/getCountry';
 import { Country } from '../types/Country';
 import { CountryCode } from '../types/CountryCode';
-import { Error404Page } from './Error404Page';
 import { LoadingProgress } from '../components/layout/LoadingProgress';
 import { CountryDetails } from '../components/CountryDetails';
 import { ArrowBack } from '@mui/icons-material';
 import { getBordersListFromCountryBorders } from '../services/getBordersListFromCountryBorders';
 import { Border } from '../types/Border';
+import { Error404Page } from './Error404Page';
 
 export function CountryPage() {
   const params = useParams<Params>();
+  const [countryCode, setCountryCode] = useState(params.countryCode);
   const [country, setCountry] = useState<Country>();
   const [borders, setBorders] = useState<Array<Border>>([]);
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    loadCountryDetails(params.countryCode as CountryCode);
-  }, [params.countryCode]);
-
-  const loadCountryDetails = async (countryCode: CountryCode) => {
     setIsLoading(true);
-    getCountry(countryCode)
-      .then((country) => {
-        setCountry(country);
-        getBordersListFromCountryBorders(country.borders).then((borders) => {
-          setBorders(borders);
-          setIsLoading(false);
-        });
-      })
-      .catch((err) => {
-        console.error(err);
-        setIsLoading(false);
+
+    loadCountryDetails()
+      .then(() => setIsLoading(false))
+      .catch(() => setIsLoading(false));
+  }, [countryCode]);
+
+  const loadCountryDetails = async () => {
+    await getCountry(countryCode).then((country) => {
+      setCountry(country);
+      getBordersListFromCountryBorders(country.borders).then((borders) => {
+        setBorders(borders);
       });
+    });
   };
 
   if (isLoading) return <LoadingProgress />;
@@ -80,7 +78,7 @@ export function CountryPage() {
             </Typography>
           </Paper>
         </Link>
-        <CountryDetails country={country} borders={borders} onClickBorder={loadCountryDetails} />
+        <CountryDetails country={country} borders={borders} onClickBorder={setCountryCode} />
       </Box>
     </Page>
   );
