@@ -1,5 +1,5 @@
 import { PaletteMode } from '@mui/material';
 
-export function isDarkTheme(value: PaletteMode): boolean {
-  return value === 'dark';
+export function isDarkTheme(theme: PaletteMode): boolean {
+  return theme === 'dark';
 }
